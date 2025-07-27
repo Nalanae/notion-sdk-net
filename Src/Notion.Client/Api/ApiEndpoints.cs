@@ -137,5 +137,33 @@
             public static string CreateToken() => "/v1/oauth/token";
             public static string RevokeToken() => "/v1/oauth/revoke";
         }
+
+        public static class FileUploadsApiUrls
+        {
+            public static string Create()
+            {
+                return "/v1/file_uploads";
+            }
+
+            public static string Send(string fileUploadId)
+            {
+                return $"/v1/file_uploads/{fileUploadId}/send";
+            }
+
+            public static string Complete(string fileUploadId)
+            {
+                return $"/v1/file_uploads/{fileUploadId}/complete";
+            }
+
+            public static string Retrieve(string fileUploadId)
+            {
+                return $"/v1/file_uploads/{fileUploadId}";
+            }
+
+            public static string List()
+            {
+                return "/v1/file_uploads";
+            }
+        }
     }
 }

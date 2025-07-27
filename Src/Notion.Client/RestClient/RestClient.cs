@@ -62,6 +62,25 @@ namespace Notion.Client
             return await response.ParseStreamAsync<T>(serializerSettings);
         }
 
+        public async Task<T> PostMultipartFormDataAsync<T>(
+            string uri,
+            MultipartFormDataContent content,
+            IEnumerable<KeyValuePair<string, string>> queryParams = null,
+            IDictionary<string, string> headers = null,
+            JsonSerializerSettings serializerSettings = null,
+            CancellationToken cancellationToken = default)
+        {
+            void AttachContent(HttpRequestMessage httpRequest)
+            {
+                httpRequest.Content = content;
+            }
+
+            var response = await SendAsync(uri, HttpMethod.Post, queryParams, headers, AttachContent,
+                cancellationToken);
+
+            return await response.ParseStreamAsync<T>(serializerSettings);
+        }
+
         public async Task<T> PatchAsync<T>(
             string uri,
             object body,

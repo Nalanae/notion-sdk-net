@@ -9,6 +9,7 @@ namespace Notion.Client
     [JsonSubtypes.KnownSubTypeAttribute(typeof(Database), ObjectType.Database)]
     [JsonSubtypes.KnownSubTypeAttribute(typeof(IBlock), ObjectType.Block)]
     [JsonSubtypes.KnownSubTypeAttribute(typeof(User), ObjectType.User)]
+    [JsonSubtypes.KnownSubTypeAttribute(typeof(FileUpload), ObjectType.FileUpload)]
     public interface IObject
     {
         [JsonProperty("id")]
